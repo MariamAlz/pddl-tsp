@@ -9,3 +9,5 @@
 python search_engine.py -domain <domain.pddl> -problem <problem.pddl> -search [bfs|dfs|ids|ucs|bfgs|astar|all]
 ````
 ### To generate random TSP problems, you can use the ````randomly_generate(num_cities)```` function.
+
+### Built on [PDDL Parser](https://github.com/pucrs-automated-planning/pddl-parser) (GPL-3.0). I added the search engine (`search_engine.py`, `search.py`) with BFS, DFS, iterative deepening, UCS and A* graph search, and the random TSP problem generator (`generate_random.py`).
