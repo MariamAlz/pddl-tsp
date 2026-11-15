@@ -4,7 +4,7 @@ import math
 def randomly_generate(num_cities):
     #count = 5
     #file_name = "pb{}.pddl".format(count)
-    file_name = "pb{}.pddl".format(num_cities)
+    file_name = "problems/pb{}.pddl".format(num_cities)
     with open(file_name, 'w') as f:
         f.write("(define (problem pb{})\n".format(num_cities))
         f.write("  (:domain tsp)\n")

@@ -86,7 +86,7 @@ if __name__ == '__main__':
         maxFrontierLength[l]=[]
 
     for i in range(1000, 5000+1000, 1000):
-        parser.parse_problem("pb{}.pddl".format(i))
+        parser.parse_problem("problems/pb{}.pddl".format(i))
         labels.append(str(i))
 
         h = create_heuristics(parser.objects)

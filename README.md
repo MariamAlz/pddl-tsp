@@ -16,16 +16,16 @@ A PDDL/STRIPS-based search engine for problems in the navigation domain, such as
   - A* search (`astar`)
 - **Comparison mode** (`-search all`): runs all six algorithms on the same problem and plots their run times as a bar chart.
 - **Random TSP generator** (`generate_random.py`): `randomly_generate(num_cities)` writes a `pb<num_cities>.pddl` problem with random two-way connections, a random start city, and a goal of visiting every city and returning to the start.
-- **Large test problems**: 23 generated problems with 1,000 to 23,000 cities (`pb1000.pddl` to `pb23000.pddl`), plus the TSP examples in `examples/tsp/` (`pb1` and `pb2` with 5 and 10 named cities, `pb3` and `pb4` with 1,000 and 10,000 cities).
+- **Large test problems**: 23 generated problems with 1,000 to 23,000 cities (`problems/pb1000.pddl` to `problems/pb23000.pddl`), plus the TSP examples in `examples/tsp/` (`pb1` and `pb2` with 5 and 10 named cities, `pb3` and `pb4` with 1,000 and 10,000 cities).
 
 ## Project structure
 
 ```
-pddl-parser-update-master/
+pddl-tsp/
 ├── search_engine.py      # command-line entry point (my addition)
 ├── search.py             # graph search, frontiers and algorithms (my addition)
 ├── generate_random.py    # random TSP problem generator (my addition)
-├── pb1000.pddl … pb23000.pddl   # generated TSP problems
+├── problems/             # generated TSP problems pb1000.pddl … pb23000.pddl
 ├── pddl_parser/          # PDDL Parser library (+ TSP helper functions in PDDL.py)
 ├── examples/             # PDDL domains: tsp, blocksworld, dinner, dwr
 ├── test_PDDL.py, test_planner.py   # PDDL Parser tests
@@ -38,7 +38,6 @@ Requirements: Python 3 with `networkx`, `numpy`, `matplotlib` and `pandas`.
 
 ```bash
 pip install networkx numpy matplotlib pandas
-cd pddl-parser-update-master
 ```
 
 Run a search:
@@ -51,10 +50,10 @@ For example:
 
 ```bash
 python search_engine.py -domain examples/tsp/tsp.pddl -problem examples/tsp/pb1.pddl -search bfs
-python search_engine.py -domain examples/tsp/tsp.pddl -problem pb1000.pddl -search all
+python search_engine.py -domain examples/tsp/tsp.pddl -problem problems/pb1000.pddl -search all
 ```
 
-Each run prints the start and goal city, the solution path, the exploration history and the elapsed time. The script must be run from inside `pddl-parser-update-master/`, because `search.py` is imported from the working directory.
+Each run prints the start and goal city, the solution path, the exploration history and the elapsed time. Run the scripts from the repository root.
 
 To generate random TSP problems, use the `randomly_generate(num_cities)` function:
 
@@ -68,8 +67,8 @@ Python, NetworkX, NumPy, pandas, Matplotlib, PDDL.
 
 ## Credits
 
-Built on [PDDL Parser](https://github.com/pucrs-automated-planning/pddl-parser) by Mau Magnaguagno (GPL-3.0), which provides the `pddl_parser` package, the example domains, the tests and the original `README.md` inside `pddl-parser-update-master/`. I added the search engine (`search_engine.py`, `search.py`) with BFS, DFS, iterative deepening, UCS, greedy best-first and A* graph search, the TSP helper functions at the end of `pddl_parser/PDDL.py`, and the random TSP problem generator (`generate_random.py`).
+Built on [PDDL Parser](https://github.com/pucrs-automated-planning/pddl-parser) by Mau Magnaguagno (GPL-3.0), which provides the `pddl_parser` package, the example domains, the tests and the original README (now `pddl_parser/README.md`). I added the search engine (`search_engine.py`, `search.py`) with BFS, DFS, iterative deepening, UCS, greedy best-first and A* graph search, the TSP helper functions at the end of `pddl_parser/PDDL.py`, and the random TSP problem generator (`generate_random.py`).
 
 ## License
 
-PDDL Parser is licensed under the GNU General Public License v3.0; see [`pddl-parser-update-master/LICENSE`](pddl-parser-update-master/LICENSE).
+PDDL Parser is licensed under the GNU General Public License v3.0; see [`LICENSE`](LICENSE).
